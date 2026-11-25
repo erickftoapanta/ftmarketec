@@ -5,7 +5,7 @@ import { BUSINESS_CONFIG } from '@/config/business';
 import { getGeneralInquiryUrl } from '@/lib/utils/whatsapp';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2026;
 
   return (
     <footer className="bg-[#041E42] text-slate-300 border-t border-slate-800">
@@ -151,4 +151,5 @@ export function Footer() {
     </footer>
   );
 }
+
 
