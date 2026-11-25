@@ -17,3 +17,35 @@ export function getWholesaleInquiryUrl(): string {
   );
 }
 
+export interface ProductOrderParams {
+  productName: string;
+  sku: string;
+  quantity: number;
+  unitPrice: number;
+  customerType: 'Minorista' | 'Comerciante / Mayorista';
+  productUrl: string;
+}
+
+export function buildProductOrderUrl({
+  productName,
+  sku,
+  quantity,
+  unitPrice,
+  customerType,
+  productUrl,
+}: ProductOrderParams): string {
+  const subtotal = (quantity * unitPrice).toFixed(2);
+  const message = [
+    `Hola FT Market EC, deseo consultar disponibilidad / realizar el siguiente pedido:`,
+    ``,
+    `• Producto: ${productName} (${sku})`,
+    `• Tipo de cliente: ${customerType}`,
+    `• Cantidad solicitada: ${quantity} ${quantity === 1 ? 'unidad' : 'unidades'}`,
+    `• Precio unitario aplicado: $${unitPrice.toFixed(2)}`,
+    `• Total estimado: $${subtotal}`,
+    `• Enlace: ${productUrl}`,
+  ].join('\n');
+
+  return buildWhatsAppUrl(message);
+}
+
