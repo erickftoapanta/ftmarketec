@@ -145,7 +145,7 @@ export function Footer() {
           <p>
             © {currentYear} {BUSINESS_CONFIG.name}. Todos los derechos reservados.
           </p>
-          <p>Sangolquí, Quito · Ecuador</p>
+          <p>Sangolquí, Pichincha, Ecuador</p>
         </div>
       </div>
     </footer>

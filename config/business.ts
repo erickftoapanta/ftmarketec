@@ -7,11 +7,11 @@ export const BUSINESS_CONFIG = {
   domain: 'https://ftmarketec.vercel.app',
   whatsappNumber: '593988584667',
   whatsappDisplay: '+593 98 858 4667',
-  location: 'Sangolquí, Quito, Ecuador · Envíos seguros a todo el Ecuador',
+  location: 'Sangolquí, Pichincha, Ecuador · Envíos seguros a todo el Ecuador',
   contact: {
     whatsappNumber: '593988584667',
     whatsappDisplay: '+593 98 858 4667',
-    city: 'Sangolquí, Quito, Ecuador',
+    city: 'Sangolquí, Pichincha, Ecuador',
     coverage: 'Envíos seguros a todo el Ecuador',
     schedule: 'Lunes a viernes: 08:30 - 17:00 · Sábados: 08:30 - 12:00',
   },
