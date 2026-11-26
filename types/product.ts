@@ -18,7 +18,14 @@ export interface ProductPricing {
   merchantPrice?: number;
   merchantMinQty?: number;
   wholesaleTiers?: WholesaleTier[];
-  promoBadge?: string;
+  hasMerchantTier: boolean;
+  promoHighlight?: string;
+}
+
+export interface ProductCommercialInfo {
+  hasMerchantTier: boolean;
+  merchantMinQty?: number;
+  promoHighlight?: string;
 }
 
 export interface ProductInternalRecord {
@@ -43,5 +50,10 @@ export interface ProductInternalRecord {
   updatedAt: string;
 }
 
-export type PublicProduct = Omit<ProductInternalRecord, 'acquisitionCost'>;
+export type PublicProduct = Omit<
+  ProductInternalRecord,
+  'acquisitionCost' | 'pricing'
+> & {
+  commercial: ProductCommercialInfo;
+};
 

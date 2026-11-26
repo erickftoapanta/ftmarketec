@@ -296,17 +296,20 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-[#F5820D]">
-                  Promociones configuradas
+                  Promociones y combos activos
                 </span>
                 <h2 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#041E42]">
-                  Ofertas y beneficios vigentes
+                  Productos con beneficios vigentes
                 </h2>
+                <p className="mt-1 text-sm text-slate-600">
+                  Consulta directamente por WhatsApp nuestros precios de temporada, combos por unidad y descuentos por volumen.
+                </p>
               </div>
               <Link
                 href="/ofertas"
-                className="text-sm font-semibold text-[#041E42] hover:text-[#003B8E] inline-flex items-center gap-1"
+                className="text-sm font-semibold text-[#041E42] hover:text-[#003B8E] inline-flex items-center gap-1 shrink-0"
               >
-                <span>Ver todas las ofertas</span>
+                <span>Ver promociones disponibles</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -319,7 +322,4 @@ export default function HomePage() {
           </div>
         </section>
       )}
-    </div>
-  );
-}
 

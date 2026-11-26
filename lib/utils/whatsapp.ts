@@ -7,13 +7,13 @@ export function buildWhatsAppUrl(message: string): string {
 
 export function getGeneralInquiryUrl(): string {
   return buildWhatsAppUrl(
-    'Hola FT Market EC, vengo desde su página web y deseo recibir información sobre sus productos y precios.'
+    'Hola FT Market EC, vengo desde su página web y deseo conocer sus precios y promociones vigentes.'
   );
 }
 
 export function getWholesaleInquiryUrl(): string {
   return buildWhatsAppUrl(
-    'Hola FT Market EC, tengo un negocio / emprendimiento y me interesa conocer el catálogo y precios para comerciantes y mayoristas.'
+    'Hola FT Market EC, tengo un negocio / emprendimiento y me interesa conocer el catálogo con precios especiales para comerciantes y mayoristas.'
   );
 }
 
@@ -21,8 +21,7 @@ export interface ProductOrderParams {
   productName: string;
   sku: string;
   quantity: number;
-  unitPrice?: number;
-  customerType: 'Minorista' | 'Comerciante / Mayorista';
+  customerType: 'Minorista (Uso personal)' | 'Comerciante / Mayorista';
   productUrl: string;
 }
 
@@ -30,29 +29,18 @@ export function buildProductOrderUrl({
   productName,
   sku,
   quantity,
-  unitPrice,
   customerType,
   productUrl,
 }: ProductOrderParams): string {
-  const priceLines =
-    unitPrice !== undefined
-      ? [
-          `• Precio unitario aplicado: $${unitPrice.toFixed(2)}`,
-          `• Total estimado: $${(quantity * unitPrice).toFixed(2)}`,
-        ]
-      : [`• Solicitud: Cotización de precio vigente (${customerType})`];
-
   const message = [
-    `Hola FT Market EC, deseo consultar disponibilidad y realizar una consulta sobre este producto:`,
+    `Hola FT Market EC, me interesa este producto de su catálogo y quisiera conocer su precio y promociones vigentes:`,
     ``,
     `• Producto: ${productName} (${sku})`,
-    `• Tipo de cliente: ${customerType}`,
-    `• Cantidad solicitada: ${quantity} ${quantity === 1 ? 'unidad' : 'unidades'}`,
-    ...priceLines,
+    `• Modalidad de compra: ${customerType}`,
+    `• Cantidad estimada: ${quantity} ${quantity === 1 ? 'unidad' : 'unidades'}`,
     `• Enlace: ${productUrl}`,
   ].join('\n');
 
   return buildWhatsAppUrl(message);
 }
-
 
