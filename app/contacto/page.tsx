@@ -8,6 +8,7 @@ import {
   Store,
 } from 'lucide-react';
 import { ContactInquiryForm } from '@/components/contact/ContactInquiryForm';
+import { BUSINESS_CONFIG } from '@/config/business';
 import {
   getGeneralInquiryUrl,
   getWholesaleInquiryUrl,
@@ -54,7 +55,9 @@ export default function ContactoPage() {
                     <p className="font-bold text-[#041E42]">
                       WhatsApp Oficial
                     </p>
-                    <p className="text-slate-600 mt-0.5">+593 98 858 4667</p>
+                    <p className="text-slate-600 mt-0.5">
+                      {BUSINESS_CONFIG.whatsappDisplay}
+                    </p>
                     <a
                       href={getGeneralInquiryUrl()}
                       target="_blank"
@@ -74,7 +77,7 @@ export default function ContactoPage() {
                       Ubicación y Cobertura
                     </p>
                     <p className="text-slate-600 mt-0.5">
-                      Quito, Pichincha · Envíos seguros a todas las provincias del Ecuador.
+                      {BUSINESS_CONFIG.location}
                     </p>
                   </div>
                 </div>
@@ -86,7 +89,10 @@ export default function ContactoPage() {
                       Horario de Atención
                     </p>
                     <p className="text-slate-600 mt-0.5">
-                      Lunes a Sábado: 08:30 – 20:00
+                      {BUSINESS_CONFIG.hours.weekdays}
+                    </p>
+                    <p className="text-slate-600">
+                      {BUSINESS_CONFIG.hours.saturday}
                     </p>
                   </div>
                 </div>
@@ -98,7 +104,7 @@ export default function ContactoPage() {
                       Logística y Entregas
                     </p>
                     <p className="text-slate-600 mt-0.5">
-                      Coordinación ágil de entregas locales y despachos interprovinciales.
+                      Coordinación ágil de entregas locales en Sangolquí / Quito y despachos interprovinciales.
                     </p>
                   </div>
                 </div>
