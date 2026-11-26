@@ -147,17 +147,17 @@ export const INTERNAL_CATALOG: ProductInternalRecord[] = [
     id: 'prod-005',
     sku: 'FTM-KV-005',
     slug: 'kit-de-vinchas',
-    name: 'Kit de Vinchas',
+    name: 'Juego de 800 + 45 Piezas de Cierre a Presión para Autos',
     category: 'belleza-accesorios',
     shortDescription:
-      'Set de vinchas suaves y elásticas para rutina facial, maquillaje y cuidado personal diario.',
+      'Kit universal de 800 grapas y remaches automotrices con 45 herramientas y accesorios de desmontaje para paneles y parachoques.',
     description:
-      'Kit de vinchas confeccionadas en material suave al tacto y ajuste elástico cómodo que mantiene el cabello recogido sin maltratarlo durante rutinas de skincare, limpieza facial o maquillaje.',
+      'Juego completo de 800 piezas de cierre a presión (clips y remaches plásticos automotrices de múltiples medidas) acompañado de 45 herramientas y accesorios de extracción e instalación sin dañar molduras. Compatible con una amplia variedad de vehículos para paneles de puertas, guardafangos, parachoques y tapicería interior.',
     features: [
-      'Tejido suave, absorbente y agradable al contacto con la piel',
-      'Banda elástica adaptable sin generar presión excesiva',
-      'Ideal para limpieza facial, maquillaje y cuidado diario',
-      'Presentación en kit lista para uso personal o reventa',
+      '800 grapas y remaches plásticos universales de distintos diámetros',
+      'Incluye 45 piezas entre palancas de extracción, sujetadores y accesorios',
+      'Material resistente al impacto y vibración para fijación firme',
+      'Ideal para talleres automotrices, latonería, mecánica y uso particular',
     ],
     images: {
       main: '/products/kit-vinchas-1.jpg',
