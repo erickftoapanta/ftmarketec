@@ -30,11 +30,10 @@ export const INTERNAL_CATALOG: ProductInternalRecord[] = [
     pricing: {
       retailPrice: 22.99,
       merchantPrice: 14.99,
-      merchantMinQty: 12,
       hasMerchantTier: true,
       promoHighlight: 'Promoción y envío disponibles',
     },
-    stock: 20,
+    stock: 24,
     isPublished: true,
     isFeatured: true,
     updatedAt: '2026-11-25',
