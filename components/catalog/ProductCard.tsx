@@ -15,6 +15,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const category = getCategoryBySlug(product.category);
   const inStock = product.stock > 0;
   const productFullUrl = `${BUSINESS_CONFIG.domain}/producto/${product.slug}`;
+  const secondaryImage = product.images.gallery[1];
 
   const quickOrderUrl = buildProductOrderUrl({
     productName: product.name,
@@ -28,7 +29,6 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <article className="group bg-white border border-slate-200 rounded-md overflow-hidden flex flex-col justify-between transition-colors hover:border-slate-300">
       <div>
-        {/* Contenedor de fotografía 1:1 */}
         <Link
           href={`/producto/${product.slug}`}
           className="relative block aspect-square bg-slate-50 border-b border-slate-100 overflow-hidden"
@@ -38,19 +38,29 @@ export function ProductCard({ product }: ProductCardProps) {
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
+            className={`object-cover object-center transition-all duration-300 ${
+              secondaryImage ? 'group-hover:opacity-0' : 'group-hover:scale-[1.03]'
+            }`}
           />
 
-          {/* Etiqueta de oferta solo si está configurada */}
+          {secondaryImage && (
+            <Image
+              src={secondaryImage}
+              alt={`${product.name} - vista alternativa`}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          )}
+
           {product.pricing.promoBadge && (
-            <span className="absolute top-3 left-3 bg-[#F5820D] text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
+            <span className="absolute top-3 left-3 z-10 bg-[#F5820D] text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
               {product.pricing.promoBadge}
             </span>
           )}
         </Link>
 
-        {/* Información comercial */}
-        <div className="p-4 sm:p-5 space-y-3">
+        <div className="p-4 sm:p-5 space-y-2.5">
           <div className="flex items-center justify-between gap-2 text-xs">
             <span className="font-medium text-slate-500 truncate">
               {category?.name ?? 'Catálogo'}
@@ -81,43 +91,53 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
 
-      {/* Bloque de precios diferenciados y acciones */}
       <div className="px-4 sm:px-5 pb-5 pt-3 border-t border-slate-100 space-y-3.5">
-        <div className="flex items-end justify-between gap-2">
-          <div>
-            <span className="block text-[11px] uppercase tracking-wider text-slate-500 font-medium">
-              Precio minorista
-            </span>
-            <div className="flex items-baseline gap-2">
-              <span className="text-xl font-extrabold text-[#041E42] tabular-price">
-                {formatUSD(product.pricing.retailPrice)}
+        {product.pricing.retailPrice !== undefined ? (
+          <div className="flex items-end justify-between gap-2">
+            <div>
+              <span className="block text-[11px] uppercase tracking-wider text-slate-500 font-medium">
+                Precio minorista
               </span>
-              {product.pricing.compareAtRetailPrice && (
-                <span className="text-xs text-slate-400 line-through tabular-price">
-                  {formatUSD(product.pricing.compareAtRetailPrice)}
+              <div className="flex items-baseline gap-2">
+                <span className="text-xl font-extrabold text-[#041E42] tabular-price">
+                  {formatUSD(product.pricing.retailPrice)}
                 </span>
-              )}
+                {product.pricing.compareAtRetailPrice && (
+                  <span className="text-xs text-slate-400 line-through tabular-price">
+                    {formatUSD(product.pricing.compareAtRetailPrice)}
+                  </span>
+                )}
+              </div>
             </div>
-          </div>
 
-          {product.pricing.merchantPrice !== undefined && (
-            <div className="text-right bg-[#F8FAFC] border border-slate-200 px-2.5 py-1.5 rounded-sm">
-              <span className="block text-[10px] uppercase tracking-wider text-[#003B8E] font-semibold">
-                Comerciante{product.pricing.merchantMinQty ? ` (${product.pricing.merchantMinQty}+)` : ''}
-              </span>
-              <span className="text-sm font-bold text-[#003B8E] tabular-price">
-                {formatUSD(product.pricing.merchantPrice)}
-              </span>
-            </div>
-          )}
-        </div>
+            {product.pricing.merchantPrice !== undefined && (
+              <div className="text-right bg-[#F8FAFC] border border-slate-200 px-2.5 py-1.5 rounded-sm">
+                <span className="block text-[10px] uppercase tracking-wider text-[#003B8E] font-semibold">
+                  Comerciante{product.pricing.merchantMinQty ? ` (${product.pricing.merchantMinQty}+)` : ''}
+                </span>
+                <span className="text-sm font-bold text-[#003B8E] tabular-price">
+                  {formatUSD(product.pricing.merchantPrice)}
+                </span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="bg-[#F8FAFC] border border-slate-200 px-3 py-2 rounded-sm flex items-center justify-between">
+            <span className="text-xs font-semibold text-[#041E42]">
+              Precio minorista y mayorista
+            </span>
+            <span className="text-xs font-bold text-[#003B8E]">
+              Consultar disponibilidad
+            </span>
+          </div>
+        )}
 
         <div className="grid grid-cols-2 gap-2">
           <Link
             href={`/producto/${product.slug}`}
             className="inline-flex items-center justify-center gap-1 bg-white hover:bg-slate-50 text-[#041E42] border border-slate-300 text-xs font-semibold py-2.5 px-3 rounded-md transition-colors"
           >
-            <span>Ver ficha</span>
+            <span>Ver galería</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
           <a

@@ -1,10 +1,9 @@
 export type ProductCategorySlug =
+  | 'deportes-recreacion'
   | 'hogar-limpieza'
   | 'cocina-utilitarios'
   | 'iluminacion-climatizacion'
-  | 'deportes-recreacion'
-  | 'belleza-accesorios'
-  | 'automotriz';
+  | 'belleza-accesorios';
 
 export interface WholesaleTier {
   minQty: number;
@@ -14,7 +13,7 @@ export interface WholesaleTier {
 }
 
 export interface ProductPricing {
-  retailPrice: number;
+  retailPrice?: number;
   compareAtRetailPrice?: number;
   merchantPrice?: number;
   merchantMinQty?: number;
@@ -36,7 +35,6 @@ export interface ProductInternalRecord {
     gallery: string[];
   };
   videoUrl?: string;
-  // Uso exclusivo interno / futuro panel admin (nunca se envía al cliente)
   acquisitionCost: number;
   pricing: ProductPricing;
   stock: number;

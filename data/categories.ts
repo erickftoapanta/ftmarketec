@@ -11,38 +11,32 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     slug: 'deportes-recreacion',
     name: 'Deportes y Recreación',
-    description: 'Artículos activos, entrenamiento y entretenimiento.',
-    image: '/products/pelota-saltarina-pogo.jpg',
+    description: 'Equilibrio, actividad física y entretenimiento de alta demanda.',
+    image: '/products/pogo-ball-1.jpg',
   },
   {
     slug: 'hogar-limpieza',
     name: 'Hogar y Limpieza',
-    description: 'Soluciones prácticas de mantenimiento y desinfección.',
-    image: '/products/limpiador-desague.jpg',
+    description: 'Soluciones prácticas y efectivas para el mantenimiento del hogar.',
+    image: '/products/wild-tornado-1.jpg',
   },
   {
     slug: 'cocina-utilitarios',
     name: 'Cocina y Utilitarios',
-    description: 'Herramientas funcionales de uso diario para el hogar.',
-    image: '/products/pelador-vegetales.jpg',
+    description: 'Herramientas funcionales y resistentes para preparación diaria.',
+    image: '/products/pelador-verduras-1.jpg',
   },
   {
     slug: 'iluminacion-climatizacion',
     name: 'Iluminación y Climatización',
-    description: 'Tecnología LED y ventilación eficiente para interiores.',
-    image: '/products/foco-ventilador-f4.jpg',
+    description: 'Iluminación LED integrada con ventilación eficiente para interiores.',
+    image: '/products/f4-fan-light-1.jpg',
   },
   {
     slug: 'belleza-accesorios',
     name: 'Belleza y Accesorios',
-    description: 'Cuidado personal y accesorios de alta rotación.',
-    image: '/products/kit-vinchas.jpg',
-  },
-  {
-    slug: 'automotriz',
-    name: 'Accesorios Automotrices',
-    description: 'Repuestos ligeros, sujeción y equipamiento vehicular.',
-    image: '/products/clips-automotrices.jpg',
+    description: 'Cuidado personal y sets de accesorios de alta rotación.',
+    image: '/products/kit-vinchas-1.jpg',
   },
 ];
 

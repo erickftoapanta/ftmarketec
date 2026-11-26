@@ -21,7 +21,7 @@ export interface ProductOrderParams {
   productName: string;
   sku: string;
   quantity: number;
-  unitPrice: number;
+  unitPrice?: number;
   customerType: 'Minorista' | 'Comerciante / Mayorista';
   productUrl: string;
 }
@@ -34,18 +34,25 @@ export function buildProductOrderUrl({
   customerType,
   productUrl,
 }: ProductOrderParams): string {
-  const subtotal = (quantity * unitPrice).toFixed(2);
+  const priceLines =
+    unitPrice !== undefined
+      ? [
+          `• Precio unitario aplicado: $${unitPrice.toFixed(2)}`,
+          `• Total estimado: $${(quantity * unitPrice).toFixed(2)}`,
+        ]
+      : [`• Solicitud: Cotización de precio vigente (${customerType})`];
+
   const message = [
-    `Hola FT Market EC, deseo consultar disponibilidad / realizar el siguiente pedido:`,
+    `Hola FT Market EC, deseo consultar disponibilidad y realizar una consulta sobre este producto:`,
     ``,
     `• Producto: ${productName} (${sku})`,
     `• Tipo de cliente: ${customerType}`,
     `• Cantidad solicitada: ${quantity} ${quantity === 1 ? 'unidad' : 'unidades'}`,
-    `• Precio unitario aplicado: $${unitPrice.toFixed(2)}`,
-    `• Total estimado: $${subtotal}`,
+    ...priceLines,
     `• Enlace: ${productUrl}`,
   ].join('\n');
 
   return buildWhatsAppUrl(message);
 }
+
 
